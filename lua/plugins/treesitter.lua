@@ -2,6 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate", -- Automatically update parsers
   event = { "BufReadPost", "BufNewFile" },
+  enabled = true,
   opts = {
     ensure_installed = { -- List of languages to install
       "lua",
@@ -13,6 +14,7 @@ return {
       "json",
       "bash",
       "markdown",
+      "prisma",
     },
     highlight = {
       enable = true, -- Enable syntax highlighting
