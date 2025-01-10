@@ -4,18 +4,7 @@ return {
   event = { "BufReadPost", "BufNewFile" },
   enabled = true,
   opts = {
-    ensure_installed = { -- List of languages to install
-      "lua",
-      "javascript",
-      "typescript",
-      "html",
-      "css",
-      "python",
-      "json",
-      "bash",
-      "markdown",
-      "prisma",
-    },
+    auto_install = true,
     highlight = {
       enable = true, -- Enable syntax highlighting
       additional_vim_regex_highlighting = false,
