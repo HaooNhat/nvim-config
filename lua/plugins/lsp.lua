@@ -1,55 +1,115 @@
 return {
+  -- MASON
   {
     "williamboman/mason.nvim",
-    lazy=false,
-    config=function()
-      require("mason").setup()
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, {
+        "stylua",
+        "luacheck",
+        "shellcheck",
+        "shfmt",
+        "tailwindcss-language-server",
+        "typescript-language-server",
+        "css-lsp",
+      })
     end,
   },
+  -- LSP Server
   {
-    "williamboman/mason-lspconfig.nvim",
-    lazy=false,
+    "neovim/nvim-lspconfig",
     opts = {
-      auto_install = true,
+      servers = {
+        cssls = {},
+        tailwindcss = {
+          root_dir = function(...)
+            return require("lspconfig.util").root_pattern(".git")(...)
+          end,
+        },
+        tsserver = {
+          root_dir = function(...)
+            return require("lspconfig.util").root_pattern(".git")(...)
+          end,
+          single_file_support = false,
+          settings = {
+            typescript = {},
+          },
+          javascript = {},
+        },
+        html = {},
+        lua_ls = {
+          -- enabled = false,
+          single_file_support = true,
+          settings = {
+            Lua = {
+              workspace = {
+                checkThirdParty = false,
+              },
+              completion = {
+                workspaceWord = true,
+                callSnippet = "Both",
+              },
+              misc = {
+                parameters = {
+                  -- "--log-level=trace",
+                },
+              },
+              hint = {
+                enable = true,
+                setType = false,
+                paramType = true,
+                paramName = "Disable",
+                semicolon = "Disable",
+                arrayIndex = "Disable",
+              },
+              doc = {
+                privateName = { "^_" },
+              },
+              type = {
+                castNumberToInteger = true,
+              },
+              diagnostics = {
+                disable = { "incomplete-signature-doc", "trailing-space" },
+                -- enable = false,
+                groupSeverity = {
+                  strong = "Warning",
+                  strict = "Warning",
+                },
+                groupFileStatus = {
+                  ["ambiguity"] = "Opened",
+                  ["await"] = "Opened",
+                  ["codestyle"] = "None",
+                  ["duplicate"] = "Opened",
+                  ["global"] = "Opened",
+                  ["luadoc"] = "Opened",
+                  ["redefined"] = "Opened",
+                  ["strict"] = "Opened",
+                  ["strong"] = "Opened",
+                  ["type-check"] = "Opened",
+                  ["unbalanced"] = "Opened",
+                  ["unused"] = "Opened",
+                },
+                unusedLocalExclude = { "_*" },
+              },
+              format = {
+                enable = false,
+                defaultConfig = {
+                  indent_style = "space",
+                  indent_size = "2",
+                  continuation_indent_size = "2",
+                },
+              },
+            },
+          },
+        },
+      },
+      setup = {},
     },
   },
   {
-    "neovim/nvim-lspconfig",
-    lazy=false,
-    config=function()
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-      local lspconfig = require('lspconfig')
-
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities
-      })
-      lspconfig.cssls.setup({
-        capabilities = capabilities
-      })
-      lspconfig.tailwindcss.setup({
-        capabilities = capabilities
-      })
-      lspconfig.dockerls.setup({
-        capabilities = capabilities
-      })
-      lspconfig.docker_compose_language_service.setup({
-        capabilities = capabilities
-      })
-      lspconfig.html.setup({
-        capabilities = capabilities
-      })
-      lspconfig.pyright.setup({
-        capabilities = capabilities
-      })
-      lspconfig.ts_ls.setup({
-        capabilities = capabilities
-      })
-
-      vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-      vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
-    end
+    "nvim-cmp",
+    dependencies = { "hrsh7th/cmp-emoji" },
+    opts = function(_, opts)
+      table.insert(opts.sources, { name = "emoji" })
+    end,
   },
 }
-

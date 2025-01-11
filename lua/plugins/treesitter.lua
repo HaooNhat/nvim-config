@@ -4,7 +4,24 @@ return {
   event = { "BufReadPost", "BufNewFile" },
   enabled = true,
   opts = {
-    auto_install = true,
+    ensure_installed = {
+      "cpp",
+      "css",
+      "gitignore",
+      "go",
+      "http",
+      "scss",
+      "sql",
+      "lua",
+      "javascript",
+      "typescript",
+      "html",
+      "python",
+      "json",
+      "bash",
+      "markdown",
+      "prisma",
+    },
     highlight = {
       enable = true, -- Enable syntax highlighting
       additional_vim_regex_highlighting = false,
@@ -26,4 +43,3 @@ return {
     require("nvim-treesitter.configs").setup(opts)
   end,
 }
-
