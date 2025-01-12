@@ -5,14 +5,25 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
-keymap.set("n", "x", "_x")
+keymap.set("n", "<leader>pv", vim.cmd.Ex, opts)
+
+keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
+keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
+
+keymap.set("n", "J", "mzJ`z", opts)
+-- keymap.set("n", "<C-d>", "<C_d>zz")
+-- keymap.set("n", "<C-u>", "<C_u>zz")
+keymap.set("n", "n", "nzzzv", opts)
+keymap.set("n", "N", "Nzzzv", opts)
+
+keymap.set("n", "x", "_x", opts)
 
 -- Increment/Decrement
-keymap.set("n", "+", "<C-a>")
-keymap.set("n", "-", "<C-x>")
+keymap.set("n", "+", "<C-a>", opts)
+keymap.set("n", "-", "<C-x>", opts)
 
 -- Select all
-keymap.set("n", "<C-a>", "gg<S-v>G")
+keymap.set("n", "<C-a>", "gg<S-v>G", opts)
 
 -- Disable continuations
 -- keymap.set("n", "<Leader>o", "o<Esc>^Da", opts)

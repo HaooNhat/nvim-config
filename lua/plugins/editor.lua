@@ -64,6 +64,7 @@ return { -- Hihglight colors
           local fb = require("telescope").extensions.file_browser
           fb.file_browser({
             cwd = vim.fn.expand("%:p:h"),
+            respect_gitignore = false,
             hidden = true,
             grouped = true,
             previewer = true,
@@ -76,12 +77,19 @@ return { -- Hihglight colors
       },
     },
     config = function(_, opts)
+      local actions = require("telescope.actions")
+      local fb_actions = require("telescope").extensions.file_browser.actions
       require("telescope").setup({
         defaults = {
           wrap_results = true,
           layout_strategy = "horizontal",
           layout_config = { prompt_position = "bottom" },
           sorting_strategy = "descending",
+          mappings = {
+            n = {
+              ["q"] = actions.close,
+            },
+          },
         },
         pickers = {
           diagnostics = { theme = "ivy", initial_mode = "normal" },
@@ -90,6 +98,33 @@ return { -- Hihglight colors
           file_browser = {
             theme = "ivy",
             hijack_netrw = true,
+            mappings = {
+              -- your custom insert mode mappings
+              ["i"] = {
+                ["<C-w>"] = function()
+                  vim.cmd("normal vbd")
+                end,
+              },
+              ["n"] = {
+                ["N"] = fb_actions.create,
+                ["h"] = fb_actions.goto_parent_dir,
+                ["/"] = function()
+                  vim.cmd("startinsert")
+                end,
+                ["<C-u>"] = function(prompt_bufnr)
+                  for i = 1, 10 do
+                    actions.move_selection_previous(prompt_bufnr)
+                  end
+                end,
+                ["<C-d>"] = function(prompt_bufnr)
+                  for i = 1, 10 do
+                    actions.move_selection_next(prompt_bufnr)
+                  end
+                end,
+                ["<PageUp>"] = actions.preview_scrolling_up,
+                ["<PageDown>"] = actions.preview_scrolling_down,
+              },
+            },
           },
         },
       })
