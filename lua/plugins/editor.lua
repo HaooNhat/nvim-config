@@ -1,4 +1,5 @@
-return { -- Hihglight colors
+return {
+  -- Hihglight colors
   {
     "echasnovski/mini.hipatterns",
     event = "BufReadPre",
@@ -31,9 +32,11 @@ return { -- Hihglight colors
         desc = "Live grep",
       },
       {
-        "\\\\",
+        ";b",
         function()
-          require("telescope.builtin").buffers()
+          require("telescope.builtin").buffers({
+            initial_mode = "normal",
+          })
         end,
         desc = "List open buffers",
       },
@@ -54,7 +57,9 @@ return { -- Hihglight colors
       {
         ";s",
         function()
-          require("telescope.builtin").treesitter()
+          require("telescope.builtin").treesitter({
+            initial_mode = "normal",
+          })
         end,
         desc = "List symbols from Treesitter",
       },

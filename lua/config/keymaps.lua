@@ -5,16 +5,16 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
-keymap.set("n", "<leader>pv", vim.cmd.Ex, opts)
+keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Explore file structure" })
 
-keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
-keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-keymap.set("n", "J", "mzJ`z", opts)
+keymap.set("n", "J", "mzJ`z")
 -- keymap.set("n", "<C-d>", "<C_d>zz")
 -- keymap.set("n", "<C-u>", "<C_u>zz")
-keymap.set("n", "n", "nzzzv", opts)
-keymap.set("n", "N", "Nzzzv", opts)
+keymap.set("n", "n", "nzzzv")
+keymap.set("n", "N", "Nzzzv")
 
 keymap.set("n", "x", "_x", opts)
 
@@ -30,7 +30,7 @@ keymap.set("n", "<C-a>", "gg<S-v>G", opts)
 -- keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
 
 -- New tab
-keymap.set("n", "te", ":tabedit")
+keymap.set("n", "te", ":tabedit ")
 keymap.set("n", "<tab>", ":tabnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 keymap.set("n", "tw", ":tabclose<Return>", opts)
