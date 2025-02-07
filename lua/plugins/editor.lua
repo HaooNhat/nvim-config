@@ -1,140 +1,140 @@
 return {
-  -- Hihglight colors
+  -- Highlight colors
   {
     "echasnovski/mini.hipatterns",
     event = "BufReadPre",
     opts = {},
   },
-  {
-    "nvim-telescope/telescope.nvim",
-    priority = 1000,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-      },
-      "nvim-telescope/telescope-file-browser.nvim",
-    },
-    keys = {
-      {
-        ";f",
-        function()
-          require("telescope.builtin").find_files({ hidden = true })
-        end,
-        desc = "Find files (respects .gitignore)",
-      },
-      {
-        ";r",
-        function()
-          require("telescope.builtin").live_grep()
-        end,
-        desc = "Live grep",
-      },
-      {
-        ";b",
-        function()
-          require("telescope.builtin").buffers({
-            initial_mode = "normal",
-          })
-        end,
-        desc = "List open buffers",
-      },
-      {
-        ";;",
-        function()
-          require("telescope.builtin").resume()
-        end,
-        desc = "Resume previous picker",
-      },
-      {
-        ";e",
-        function()
-          require("telescope.builtin").diagnostics()
-        end,
-        desc = "List diagnostics",
-      },
-      {
-        ";s",
-        function()
-          require("telescope.builtin").treesitter({
-            initial_mode = "normal",
-          })
-        end,
-        desc = "List symbols from Treesitter",
-      },
-      {
-        "sf",
-        function()
-          local fb = require("telescope").extensions.file_browser
-          fb.file_browser({
-            cwd = vim.fn.expand("%:p:h"),
-            respect_gitignore = false,
-            hidden = true,
-            grouped = true,
-            previewer = true,
-            initial_mode = "normal",
-            layout_strategy = "horizontal",
-            layout_config = { height = 0.7, preview_cutoff = 120, width = 0.8 },
-          })
-        end,
-        desc = "Open file browser in buffer's directory",
-      },
-    },
-    config = function(_, opts)
-      local actions = require("telescope.actions")
-      local fb_actions = require("telescope").extensions.file_browser.actions
-      require("telescope").setup({
-        defaults = {
-          wrap_results = true,
-          layout_strategy = "horizontal",
-          layout_config = { prompt_position = "bottom" },
-          sorting_strategy = "descending",
-          mappings = {
-            n = {
-              ["q"] = actions.close,
-            },
-          },
-        },
-        pickers = {
-          diagnostics = { theme = "ivy", initial_mode = "normal" },
-        },
-        extensions = {
-          file_browser = {
-            theme = "ivy",
-            hijack_netrw = true,
-            mappings = {
-              -- your custom insert mode mappings
-              ["i"] = {
-                ["<C-w>"] = function()
-                  vim.cmd("normal vbd")
-                end,
-              },
-              ["n"] = {
-                ["N"] = fb_actions.create,
-                ["h"] = fb_actions.goto_parent_dir,
-                ["/"] = function()
-                  vim.cmd("startinsert")
-                end,
-                ["<C-u>"] = function(prompt_bufnr)
-                  for i = 1, 10 do
-                    actions.move_selection_previous(prompt_bufnr)
-                  end
-                end,
-                ["<C-d>"] = function(prompt_bufnr)
-                  for i = 1, 10 do
-                    actions.move_selection_next(prompt_bufnr)
-                  end
-                end,
-                ["<PageUp>"] = actions.preview_scrolling_up,
-                ["<PageDown>"] = actions.preview_scrolling_down,
-              },
-            },
-          },
-        },
-      })
-      require("telescope").load_extension("fzf")
-      require("telescope").load_extension("file_browser")
-    end,
-  },
+  -- {
+  --   "nvim-telescope/telescope.nvim",
+  --   priority = 1000,
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     {
+  --       "nvim-telescope/telescope-fzf-native.nvim",
+  --       build = "make",
+  --     },
+  --     "nvim-telescope/telescope-file-browser.nvim",
+  --   },
+  --   keys = {
+  --     {
+  --       ";f",
+  --       function()
+  --         require("telescope.builtin").find_files({ hidden = true })
+  --       end,
+  --       desc = "Find files (respects .gitignore)",
+  --     },
+  --     {
+  --       ";r",
+  --       function()
+  --         require("telescope.builtin").live_grep()
+  --       end,
+  --       desc = "Live grep",
+  --     },
+  --     {
+  --       ";b",
+  --       function()
+  --         require("telescope.builtin").buffers({
+  --           initial_mode = "normal",
+  --         })
+  --       end,
+  --       desc = "List open buffers",
+  --     },
+  --     {
+  --       ";;",
+  --       function()
+  --         require("telescope.builtin").resume()
+  --       end,
+  --       desc = "Resume previous picker",
+  --     },
+  --     {
+  --       ";e",
+  --       function()
+  --         require("telescope.builtin").diagnostics()
+  --       end,
+  --       desc = "List diagnostics",
+  --     },
+  --     {
+  --       ";s",
+  --       function()
+  --         require("telescope.builtin").treesitter({
+  --           initial_mode = "normal",
+  --         })
+  --       end,
+  --       desc = "List symbols from Treesitter",
+  --     },
+  --     {
+  --       "sf",
+  --       function()
+  --         local fb = require("telescope").extensions.file_browser
+  --         fb.file_browser({
+  --           cwd = vim.fn.expand("%:p:h"),
+  --           respect_gitignore = false,
+  --           hidden = true,
+  --           grouped = true,
+  --           previewer = true,
+  --           initial_mode = "normal",
+  --           layout_strategy = "horizontal",
+  --           layout_config = { height = 0.7, preview_cutoff = 120, width = 0.8 },
+  --         })
+  --       end,
+  --       desc = "Open file browser in buffer's directory",
+  --     },
+  --   },
+  --   config = function(_, opts)
+  --     local actions = require("telescope.actions")
+  --     local fb_actions = require("telescope").extensions.file_browser.actions
+  --     require("telescope").setup({
+  --       defaults = {
+  --         wrap_results = true,
+  --         layout_strategy = "horizontal",
+  --         layout_config = { prompt_position = "bottom" },
+  --         sorting_strategy = "descending",
+  --         mappings = {
+  --           n = {
+  --             ["q"] = actions.close,
+  --           },
+  --         },
+  --       },
+  --       pickers = {
+  --         diagnostics = { theme = "ivy", initial_mode = "normal" },
+  --       },
+  --       extensions = {
+  --         file_browser = {
+  --           theme = "ivy",
+  --           hijack_netrw = true,
+  --           mappings = {
+  --             -- your custom insert mode mappings
+  --             ["i"] = {
+  --               ["<C-w>"] = function()
+  --                 vim.cmd("normal vbd")
+  --               end,
+  --             },
+  --             ["n"] = {
+  --               ["N"] = fb_actions.create,
+  --               ["h"] = fb_actions.goto_parent_dir,
+  --               ["/"] = function()
+  --                 vim.cmd("startinsert")
+  --               end,
+  --               ["<C-u>"] = function(prompt_bufnr)
+  --                 for i = 1, 10 do
+  --                   actions.move_selection_previous(prompt_bufnr)
+  --                 end
+  --               end,
+  --               ["<C-d>"] = function(prompt_bufnr)
+  --                 for i = 1, 10 do
+  --                   actions.move_selection_next(prompt_bufnr)
+  --                 end
+  --               end,
+  --               ["<PageUp>"] = actions.preview_scrolling_up,
+  --               ["<PageDown>"] = actions.preview_scrolling_down,
+  --             },
+  --           },
+  --         },
+  --       },
+  --     })
+  --     require("telescope").load_extension("fzf")
+  --     require("telescope").load_extension("file_browser")
+  --   end,
+  -- },
 }
