@@ -18,6 +18,13 @@ return {
         desc = "Find files",
       },
       {
+        ";b",
+        function()
+          require("fzf-lua").buffers()
+        end,
+        desc = "Find buffers",
+      },
+      {
         ";g",
         function()
           require("fzf-lua").live_grep()
