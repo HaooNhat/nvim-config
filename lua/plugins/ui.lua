@@ -1,4 +1,21 @@
 return {
+  -- Border for blink
+  {
+    "saghen/blink.cmp",
+    opts = {
+      completion = {
+        menu = {
+          border = "rounded",
+          winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
+        },
+        documentation = {
+          window = {
+            border = "rounded",
+          },
+        },
+      },
+    },
+  },
   -- Border for lsp doc hover
   {
     "folke/noice.nvim",

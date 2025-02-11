@@ -19,6 +19,11 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       inlay_hints = { enabled = true },
+      diagnostics = {
+        float = {
+          border = "rounded",
+        },
+      },
       servers = {
         cssls = {},
         tailwindcss = {
