@@ -8,8 +8,8 @@ local opts = { noremap = true, silent = true }
 keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Explore file structure" })
 
 keymap.set("n", "J", "mzJ`z")
-keymap.set("n", "<C-d>", "<C-d>zz")
-keymap.set("n", "<C-u>", "<C-u>zz")
+-- keymap.set("n", "<C-d>", "<C-d>zz")
+-- keymap.set("n", "<C-u>", "<C-u>zz")
 keymap.set("n", "n", "nzzzv")
 keymap.set("n", "N", "Nzzzv")
 
