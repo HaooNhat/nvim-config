@@ -14,21 +14,21 @@
 -- }
 
 -- catppuccin theme
-return {
-  "catppuccin/nvim",
-  lazy = true,
-  priority = 1000,
-  opts = {
-    flavour = "mocha",
-
-    -- transparent_background = true,
-
-    styles = {
-      floats = "transparent",
-      sidebars = "transparent",
-    },
-  },
-}
+-- return {
+--   "catppuccin/nvim",
+--   lazy = true,
+--   priority = 1000,
+--   opts = {
+--     flavour = "mocha",
+--
+--     -- transparent_background = true,
+--
+--     styles = {
+--       floats = "transparent",
+--       sidebars = "transparent",
+--     },
+--   },
+-- }
 
 -- kanagawa
 -- return {
@@ -44,3 +44,17 @@ return {
 --     },
 --   },
 -- }
+
+-- cyberdream
+return {
+  "scottmckendry/cyberdream.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {
+    variant = "dark",
+    transparent = true,
+    hide_fillchars = true,
+    italic_comments = true,
+    -- borderless_pickers = true,
+  },
+}
