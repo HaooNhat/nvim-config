@@ -1,7 +1,7 @@
 return {
   -- MASON
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         "stylua",
@@ -16,7 +16,7 @@ return {
   },
   -- LSP Server
   {
-    "neovim/nvim-lspconfig",
+    "mason-org/mason-lspconfig.nvim",
     opts = {
       inlay_hints = { enabled = true },
       diagnostics = {
