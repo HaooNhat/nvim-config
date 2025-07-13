@@ -52,6 +52,62 @@ return {
         end,
         desc = "Find definitions",
       },
+      {
+        ";w",
+        function()
+          require("fzf-lua").grep_cword()
+        end,
+        desc = "Grep current word",
+      },
+      {
+        ";W",
+        function()
+          require("fzf-lua").grep_cWORD()
+        end,
+        desc = "Grep current WORD",
+      },
+      {
+        ";a",
+        function()
+          require("fzf-lua").commands()
+        end,
+        desc = "Find location list",
+      },
+      {
+        ";c",
+        function()
+          require("fzf-lua").builtin()
+        end,
+        desc = "Find location list",
+      },
+      {
+        ";s",
+        function()
+          require("fzf-lua").lsp_document_symbols()
+        end,
+        desc = "Find current file symbols",
+      },
+      {
+        ";j",
+        function()
+          require("fzf-lua").jumps()
+        end,
+        desc = "Open jump list",
+      },
+      {
+        ";m",
+        function()
+          require("fzf-lua").marks()
+        end,
+        desc = "Open mark list",
+      },
+      {
+        ";t",
+        function()
+          require("fzf-lua").tabs()
+        end,
+        desc = "Open tab list",
+      },
     },
     opts = {
       winopts = {

@@ -53,8 +53,8 @@ return {
   opts = {
     variant = "dark",
     transparent = true,
-    hide_fillchars = true,
     italic_comments = true,
+    --   hide_fillchars = true,
     -- borderless_pickers = true,
   },
 }
