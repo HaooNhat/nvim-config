@@ -23,9 +23,9 @@ require("lazy").setup({
       import = "lazyvim.plugins",
       opts = {
         -- colorscheme = "solarized-osaka",
-        -- colorscheme = "catppuccin",
-        colorscheme = "cyberdream",
-        -- colorscheme = "kanagawa-lotus",
+        colorscheme = "catppuccin",
+        -- colorscheme = "cyberdream",
+        -- colorscheme = "kanagawa-dragon",
       },
     },
     { import = "lazyvim.plugins.extras.linting.eslint" },

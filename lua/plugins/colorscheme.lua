@@ -14,23 +14,23 @@
 -- }
 
 -- catppuccin theme
--- return {
---   "catppuccin/nvim",
---   lazy = true,
---   priority = 1000,
---   opts = {
---     flavour = "mocha",
---
---     -- transparent_background = true,
---
---     styles = {
---       floats = "transparent",
---       sidebars = "transparent",
---     },
---   },
--- }
+return {
+  "catppuccin/nvim",
+  lazy = true,
+  priority = 1000,
+  opts = {
+    flavour = "mocha",
 
--- kanagawa
+    -- transparent_background = true,
+
+    styles = {
+      floats = "transparent",
+      sidebars = "transparent",
+    },
+  },
+}
+
+-- kanagawa for light mode
 -- return {
 --   "rebelot/kanagawa.nvim",
 --   lazy = true,
@@ -46,15 +46,15 @@
 -- }
 
 -- cyberdream
-return {
-  "scottmckendry/cyberdream.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {
-    variant = "dark",
-    transparent = true,
-    italic_comments = true,
-    --   hide_fillchars = true,
-    -- borderless_pickers = true,
-  },
-}
+-- return {
+--   "scottmckendry/cyberdream.nvim",
+--   lazy = false,
+--   priority = 1000,
+--   opts = {
+--     variant = "dark",
+--     transparent = true,
+--     italic_comments = true,
+--     --   hide_fillchars = true,
+--     -- borderless_pickers = true,
+--   },
+-- }
