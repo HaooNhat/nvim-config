@@ -13,22 +13,40 @@
 --   },
 -- }
 
--- catppuccin theme
 return {
-  "catppuccin/nvim",
-  lazy = true,
+  "projekt0n/github-nvim-theme",
+  name = "github-theme",
+  lazy = false,
   priority = 1000,
+
   opts = {
-    flavour = "mocha",
-
-    transparent_background = true,
-
-    styles = {
-      floats = "transparent",
-      sidebars = "transparent",
+    options = {
+      -- transparent = true,
+      styles = {
+        comments = "italic",
+        keywords = "bold",
+        types = "italic,bold",
+      },
     },
   },
 }
+
+-- catppuccin theme
+-- return {
+--   "catppuccin/nvim",
+--   lazy = true,
+--   priority = 1000,
+--   opts = {
+--     flavour = "mocha",
+--
+--     transparent_background = true,
+--
+--     styles = {
+--       floats = "transparent",
+--       sidebars = "transparent",
+--     },
+--   },
+-- }
 
 -- kanagawa for light mode
 -- return {
