@@ -23,11 +23,10 @@ return {
       opts.presets.lsp_doc_border = true
     end,
   },
-  -- Longer message timeout
   {
     "rcarriga/nvim-notify",
     opts = {
-      timeout = 10000,
+      timeout = 3000,
     },
   },
   -- Disable bufferline at the top (if use mouse then enable it)

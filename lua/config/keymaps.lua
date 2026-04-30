@@ -7,11 +7,11 @@ local opts = { noremap = true, silent = true }
 
 -- keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Explore file structure" })
 
-keymap.set("n", "J", "mzJ`z")
+keymap.set("n", "J", "mzJ`z", opts)
 -- keymap.set("n", "<C-d>", "<C-d>zz")
 -- keymap.set("n", "<C-u>", "<C-u>zz")
-keymap.set("n", "n", "nzzzv")
-keymap.set("n", "N", "Nzzzv")
+keymap.set("n", "n", "nzzzv", opts)
+keymap.set("n", "N", "Nzzzv", opts)
 
 keymap.set("n", "x", "_x", opts)
 
@@ -27,10 +27,9 @@ keymap.set("n", "<Leader>o", "o<Esc>^Da", vim.tbl_extend("force", opts, { desc =
 keymap.set("n", "<Leader>O", "O<Esc>^Da", vim.tbl_extend("force", opts, { desc = "New line above (no comment)" }))
 
 -- New tab
-keymap.set("n", "te", ":tabedit ")
-keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+keymap.set("n", "te", ":tabedit ", opts)
 keymap.set("n", "tw", ":tabclose<Return>", opts)
+-- <Tab>/<S-Tab> are handled by bufferline in plugins/ui.lua
 
 -- Split window
 keymap.set("n", "ss", ":split<Return>", opts)
